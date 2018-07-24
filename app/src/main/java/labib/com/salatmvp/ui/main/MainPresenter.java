@@ -71,6 +71,7 @@ public class MainPresenter extends BasePresenter<MainContract.View> implements M
 
         getDataManager().updateStatus(true);
         initStatus();
+        showNextAlerts();
     }
 
     @Override

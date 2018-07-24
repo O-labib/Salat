@@ -57,6 +57,8 @@ public class MainActivity extends BaseActivity<MainContract.Presenter> implement
     @Inject
     FragmentManager fragmentManager;
 
+    boolean justStarted = true;
+
     @Override
     protected int getContentResource() {
         return R.layout.activity_main;
@@ -156,16 +158,25 @@ public class MainActivity extends BaseActivity<MainContract.Presenter> implement
         getPresenter().initViews();
     }
 
-    public static void animateButtons(boolean hide, ImageView... buttons) {
+    public void animateButtons(boolean hide, ImageView... buttons) {
         for (ImageView button : buttons) {
             if (hide) {
-                button.animate().alphaBy(-1f).setDuration(300).start();
+                if (justStarted) {
+                    button.setVisibility(View.GONE);
+                    button.animate().alpha(0f).setDuration(300).start();
+                } else {
+                    button.animate().alpha(0f).setDuration(300).start();
+                }
             } else {
-                button.animate().alphaBy(1f).setDuration(300).start();
+                button.setVisibility(View.VISIBLE);
+                button.animate().alpha(1f).setDuration(300).start();
             }
             button.setClickable(!hide);
             button.animate().rotationBy(360f).setDuration(300).start();
+
         }
+        justStarted = false;
+
     }
 
 
