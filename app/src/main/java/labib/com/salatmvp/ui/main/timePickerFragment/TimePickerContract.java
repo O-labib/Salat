@@ -21,8 +21,6 @@ public interface TimePickerContract {
 
         void updateEnd(int h, int m);
 
-        void onTimePickerChanged(int h);
-
     }
 
 }

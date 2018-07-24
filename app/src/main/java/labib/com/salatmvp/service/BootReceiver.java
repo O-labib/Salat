@@ -21,15 +21,8 @@ public class BootReceiver extends BroadcastReceiver {
 
         boolean isRunning = getDataManager().retrieveStatus();
         if (isRunning) {
-            getDataManager().startAlarm(alarmPendingIntent(context));
+            getDataManager().startAlarm();
         }
-    }
-
-
-    public PendingIntent alarmPendingIntent(Context context) {
-        Intent alarmIntent = new Intent(context, AlarmReciever.class);
-        return PendingIntent.getBroadcast
-                (context, 0, alarmIntent, PendingIntent.FLAG_UPDATE_CURRENT);
     }
 
 

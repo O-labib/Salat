@@ -27,10 +27,7 @@ public class CounterFragment extends BaseDialog<CounterContract.Presenter> imple
 
 
     public static CounterFragment newInstance() {
-        CounterFragment fragment = new CounterFragment();
-        Bundle bundle = new Bundle();
-        fragment.setArguments(bundle);
-        return fragment;
+        return new CounterFragment();
     }
 
 

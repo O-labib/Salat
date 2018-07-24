@@ -1,7 +1,5 @@
 package labib.com.salatmvp.ui.main;
 
-import android.app.PendingIntent;
-
 import labib.com.salatmvp.ui.base.BaseMvpPresenter;
 import labib.com.salatmvp.ui.base.BaseMvpView;
 
@@ -12,7 +10,7 @@ public interface MainContract {
 
         void updateStatus(String btnText, boolean isRunning);
 
-        PendingIntent alarmPendingIntent();
+        void walkThrough(int i);
     }
 
     interface Presenter extends BaseMvpPresenter<View> {
@@ -23,6 +21,10 @@ public interface MainContract {
         void startAlarm();
 
         void stopAlarm();
+
+        void showNextAlerts();
+
+        void nextView(int i);
     }
 
 }

@@ -3,6 +3,7 @@ package labib.com.salatmvp.ui.main;
 import labib.com.salatmvp.Logy;
 import labib.com.salatmvp.data.DataManager;
 import labib.com.salatmvp.ui.base.BasePresenter;
+import labib.com.salatmvp.utils.AppUtils;
 
 public class MainPresenter extends BasePresenter<MainContract.View> implements MainContract.Presenter {
 
@@ -66,7 +67,7 @@ public class MainPresenter extends BasePresenter<MainContract.View> implements M
         }
 
         getDataManager().updateActiveNoPrayers(getDataManager().retrieveActiveNofPrayer());
-        getDataManager().startAlarm(getView().alarmPendingIntent());
+        getDataManager().startAlarm();
 
         getDataManager().updateStatus(true);
         initStatus();
@@ -74,10 +75,21 @@ public class MainPresenter extends BasePresenter<MainContract.View> implements M
 
     @Override
     public void stopAlarm() {
-        getDataManager().stopAlarm(getView().alarmPendingIntent());
+        getDataManager().stopAlarm();
 
         getDataManager().updateStatus(false);
         initStatus();
+    }
+
+    @Override
+    public void showNextAlerts() {
+        String message;
+        if (getDataManager().retrieveStatus()) {
+            message = AppUtils.calendarsToReadableDate(getDataManager().getStartInMills(), getDataManager().getEndInMills());
+        } else {
+            message = "قم بتفعيل التنبيه اولا!";
+        }
+        getView().showMessage(message);
     }
 
 
@@ -120,5 +132,11 @@ public class MainPresenter extends BasePresenter<MainContract.View> implements M
             amOrPm = "م";
         }
         return hour + " " + amOrPm;
+    }
+
+    @Override
+    public void nextView(int i) {
+        i = i + 1;
+        getView().walkThrough(i);
     }
 }

@@ -14,8 +14,8 @@ public interface AlarmHelper {
 
     long getStartInMills();
 
-    void startAlarm(PendingIntent pendingIntent);
+    void startAlarm();
 
-    void stopAlarm(PendingIntent pendingIntent);
+    void stopAlarm();
 
 }

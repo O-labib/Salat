@@ -31,8 +31,6 @@ public class AppSharedPrefHelper implements SharedPrefHelper {
 
     @Override
     public int retrieveNofPrayers() {
-        Logy.i(sharedPreferences.getInt(N_OF_PRAYERS, 100));
-
         return sharedPreferences.getInt(N_OF_PRAYERS, 100);
     }
 

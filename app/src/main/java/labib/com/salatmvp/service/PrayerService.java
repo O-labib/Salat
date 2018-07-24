@@ -58,7 +58,6 @@ public class PrayerService extends Service implements MediaPlayer.OnPreparedList
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-
         deltaMills = getDataManager().getEndInMills() - System.currentTimeMillis();
         nOfPrayers = getDataManager().retrieveActiveNofPrayer();
         interval = deltaMills / nOfPrayers;
@@ -85,6 +84,8 @@ public class PrayerService extends Service implements MediaPlayer.OnPreparedList
 
             @Override
             public void onTick(long l) {
+                nOfPrayers = nOfPrayers - 1;
+                getDataManager().updateActiveNoPrayers(nOfPrayers);
                 if (audioManager.getRingerMode() != AudioManager.RINGER_MODE_SILENT && !audioManager.isMusicActive()) {
                     mediaPlayer.start();
                 }
@@ -101,7 +102,6 @@ public class PrayerService extends Service implements MediaPlayer.OnPreparedList
     @Override
     public void onDestroy() {
         super.onDestroy();
-
         countDownTimer.cancel();
         mediaPlayer.stop();
     }

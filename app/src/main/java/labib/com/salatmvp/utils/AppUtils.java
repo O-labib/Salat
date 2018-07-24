@@ -1,5 +1,6 @@
 package labib.com.salatmvp.utils;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -35,11 +36,28 @@ public final class AppUtils {
         toast.show();
     }
 
-    public static String calendarToReadableDate(Calendar calendar) {
-        Date dateObject = new Date(calendar.getTimeInMillis());
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("E dd-MM hh:mm a");
-        String dateToDisplay = simpleDateFormat.format(dateObject);
-        return dateToDisplay;
+    public static String calendarsToReadableDate(long startCalendarInMills, long endCalendarInMills) {
+        Date startDate = new Date(startCalendarInMills);
+        Date endDate = new Date(endCalendarInMills);
+        @SuppressLint("SimpleDateFormat") SimpleDateFormat simpleDateFormat = new SimpleDateFormat("E dd-MM hh:mm a");
+
+        String nextStartingDate = simpleDateFormat.format(startDate);
+        String[] nextStartingDateElements = nextStartingDate.split(" ", 2);
+        String startingDay = nextStartingDateElements[0];
+        String startingHour = nextStartingDateElements[1];
+
+        String nextEndDate = simpleDateFormat.format(endDate);
+
+        String nextStartTitle = "يبدا التنبيه القادم يوم ال";
+
+        String nextEndTitle = "ويتنهى يوم ال";
+        String line = "\n";
+
+        StringBuilder stringBuilder = new StringBuilder();
+
+        stringBuilder.append(nextStartTitle).append(startingDay).append(line)
+                .append(startingHour).append(line).append(nextEndTitle).append(nextEndDate);
+        return stringBuilder.toString();
     }
 
 

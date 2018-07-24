@@ -59,8 +59,9 @@ public class ApplicationModule {
     @Singleton
     AppAlarmHelper provideAlarmHelper(AlarmManager alarmManager,
                                       @Named("startCalendar") Calendar startCalendar,
-                                      @Named("endCalendar") Calendar endCalendar) {
-        return new AppAlarmHelper(alarmManager, startCalendar, endCalendar);
+                                      @Named("endCalendar") Calendar endCalendar,
+                                      @Named("applicationContext") Context context) {
+        return new AppAlarmHelper(alarmManager, startCalendar, endCalendar, context);
     }
 
     @Provides

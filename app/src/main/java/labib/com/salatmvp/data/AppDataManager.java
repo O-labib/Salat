@@ -93,12 +93,12 @@ public class AppDataManager implements DataManager {
     }
 
     @Override
-    public void startAlarm(PendingIntent pendingIntent) {
-        appAlarmHelper.startAlarm(pendingIntent);
+    public void startAlarm() {
+        appAlarmHelper.startAlarm();
     }
 
     @Override
-    public void stopAlarm(PendingIntent pendingIntent) {
-        appAlarmHelper.stopAlarm(pendingIntent);
+    public void stopAlarm() {
+        appAlarmHelper.stopAlarm();
     }
 }

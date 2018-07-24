@@ -1,10 +1,9 @@
 package labib.com.salatmvp.ui.main;
 
-import android.app.PendingIntent;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentManager;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -14,13 +13,13 @@ import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.OnClick;
-import labib.com.salatmvp.Logy;
 import labib.com.salatmvp.R;
-import labib.com.salatmvp.service.AlarmReciever;
 import labib.com.salatmvp.ui.base.BaseActivity;
 import labib.com.salatmvp.ui.base.BaseDialog;
 import labib.com.salatmvp.ui.main.counterFragment.CounterFragment;
 import labib.com.salatmvp.ui.main.timePickerFragment.TimePickerFragment;
+import me.toptas.fancyshowcase.DismissListener;
+import me.toptas.fancyshowcase.FancyShowCaseView;
 
 import static labib.com.salatmvp.utils.AppConstants.END_SETUP;
 import static labib.com.salatmvp.utils.AppConstants.START_SETUP;
@@ -51,6 +50,9 @@ public class MainActivity extends BaseActivity<MainContract.Presenter> implement
     @BindView(R.id.setCounterBtn)
     ImageView setCounterBtn;
 
+    @BindView(R.id.infoBtn)
+    ImageView infoBtn;
+
 
     @Inject
     FragmentManager fragmentManager;
@@ -64,6 +66,36 @@ public class MainActivity extends BaseActivity<MainContract.Presenter> implement
     protected void init(@Nullable Bundle state) {
         getPresenter().initViews();
         getPresenter().initStatus();
+
+        walkThrough(0);
+    }
+
+    @Override
+    public void walkThrough(final int i) {
+        String[] walkThroughMessages = getResources().getStringArray(R.array.walkThroughTitles);
+        String[] walkThroughCounter = getResources().getStringArray(R.array.walkThroughCounter);
+        View[] view = {setCounterBtn, setStartAtBtn, setEndAtBtn, setButton, infoBtn};
+
+        if (i < walkThroughCounter.length) {
+            new FancyShowCaseView.Builder(MainActivity.this)
+                    .focusOn(view[i])
+                    .showOnce(walkThroughCounter[i])
+                    .title(walkThroughMessages[i])
+                    .backgroundColor(getResources().getColor(R.color.colorShowCase))
+                    .titleStyle(R.style.walkThrough, Gravity.CENTER)
+                    .dismissListener(new DismissListener() {
+                        @Override
+                        public void onDismiss(String id) {
+                            getPresenter().nextView(i);
+                        }
+
+                        @Override
+                        public void onSkipped(String id) {
+
+                        }
+                    }).build().show();
+        }
+
     }
 
     @Override
@@ -71,29 +103,27 @@ public class MainActivity extends BaseActivity<MainContract.Presenter> implement
         getComponent().inject(this);
     }
 
+
     @OnClick(R.id.setCounterBtn)
     public void setCounterBtn() {
         CounterFragment.newInstance().show(fragmentManager);
     }
-
 
     @OnClick(R.id.setStartAtBtn)
     public void setStartAtBtn() {
         TimePickerFragment.newInstance(START_SETUP).show(fragmentManager);
     }
 
-
     @OnClick(R.id.setEndAtBtn)
     public void setEndAtBtn() {
         TimePickerFragment.newInstance(END_SETUP).show(fragmentManager);
     }
 
+
     @OnClick(R.id.infoBtn)
     public void infoBtn(View view) {
-
-
+        getPresenter().showNextAlerts();
     }
-
 
     @OnClick(R.id.finalSetBtn)
     public void submit(View view) {
@@ -138,11 +168,5 @@ public class MainActivity extends BaseActivity<MainContract.Presenter> implement
         }
     }
 
-    @Override
-    public PendingIntent alarmPendingIntent() {
-        Intent alarmIntent = new Intent(this, AlarmReciever.class);
-        return PendingIntent.getBroadcast
-                (this, 0, alarmIntent, PendingIntent.FLAG_UPDATE_CURRENT);
-    }
 
 }

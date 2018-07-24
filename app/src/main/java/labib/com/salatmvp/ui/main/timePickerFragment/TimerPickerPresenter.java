@@ -41,9 +41,4 @@ public class TimerPickerPresenter extends BasePresenter<TimePickerContract.View>
         getDataManager().updateEndAt(h, m);
     }
 
-    @Override
-    public void onTimePickerChanged(int h) {
-        String s = (h < 17) ? "يوم الجمعة" : "ليلة الخميس ";
-        getView().updateDayTV(s);
-    }
 }

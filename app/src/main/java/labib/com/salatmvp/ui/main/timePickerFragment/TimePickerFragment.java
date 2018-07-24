@@ -4,21 +4,19 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentManager;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
 import butterknife.BindView;
 import butterknife.OnClick;
-import labib.com.salatmvp.Logy;
 import labib.com.salatmvp.R;
 import labib.com.salatmvp.ui.base.BaseDialog;
 
 import static labib.com.salatmvp.utils.AppConstants.END_SETUP;
 import static labib.com.salatmvp.utils.AppConstants.START_SETUP;
 
-public class TimePickerFragment extends BaseDialog<TimePickerContract.Presenter> implements TimePickerContract.View, TimePicker.OnTimeChangedListener {
+public class TimePickerFragment extends BaseDialog<TimePickerContract.Presenter> implements TimePickerContract.View{
 
     private static final String TAG = "TimePickerDialog";
 
@@ -52,13 +50,11 @@ public class TimePickerFragment extends BaseDialog<TimePickerContract.Presenter>
                 break;
             case END_SETUP:
                 getPresenter().getSavedEnd();
+                dayTV.setVisibility(View.GONE);
                 break;
             default:
                 break;
         }
-        timePicker.setIs24HourView(true);
-        timePicker.setOnTimeChangedListener(this);
-
 
     }
 
@@ -113,7 +109,6 @@ public class TimePickerFragment extends BaseDialog<TimePickerContract.Presenter>
             timePicker.setCurrentHour(h);
             timePicker.setCurrentMinute(m);
         }
-        onTimeChanged(null, h, m);
 
     }
 
@@ -129,14 +124,6 @@ public class TimePickerFragment extends BaseDialog<TimePickerContract.Presenter>
         return new int[]{hour, minute};
     }
 
-    @Override
-    public void onTimeChanged(TimePicker timePicker, int hour, int i1) {
-        if (whichFragment() == START_SETUP) {
-            getPresenter().onTimePickerChanged(hour);
-        } else {
-            dayTV.setVisibility(View.GONE);
-        }
-    }
 
     @Override
     public void updateDayTV(String d) {
