@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.main.MainActivity">
+
+
+    <ImageView
+        android:id="@+id/infoButton"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginTop="24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_info"
+        android:layout_marginRight="10dp" />
+
+    <ImageView
+        android:id="@+id/mainHeader"
+        android:layout_width="150dp"
+        android:layout_height="141dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="24dp"
+        android:elevation="6dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/main_header" />
+
+    <ImageView
+        android:id="@+id/hadith"
+        android:layout_width="0dp"
+        android:layout_height="80dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="32dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/mainHeader"
+        app:srcCompat="@drawable/hadith" />
+
+    <TextView
+        android:id="@+id/prayerTitleCounterTextV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="32dp"
+        android:text="عدد الصلوات"
+        android:textAppearance="@style/TextAppearance.AppCompat.Title"
+        android:textColor="@color/colorPrimary"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/hadith"
+        android:layout_marginLeft="16dp" />
+
+    <TextView
+        android:id="@+id/prayerCounterTextV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="32dp"
+        android:text="100"
+        android:textAppearance="@style/TextAppearance.AppCompat.Title"
+        android:textColor="@color/colorContract"
+        app:layout_constraintStart_toEndOf="@+id/prayerTitleCounterTextV"
+        app:layout_constraintTop_toBottomOf="@+id/hadith"
+        android:layout_marginLeft="20dp" />
+
+
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="32dp"
+        android:text="تبدأ"
+        android:textAppearance="@style/TextAppearance.AppCompat.Title"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/prayerTitleCounterTextV"
+        android:layout_marginLeft="16dp" />
+
+    <TextView
+        android:id="@+id/startAtDayTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="6dp"
+        android:layout_marginTop="32dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Title"
+        android:textColor="@color/colorContract"
+        app:layout_constraintStart_toEndOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/prayerTitleCounterTextV"
+        tools:text="ليلة الجمعة"
+        android:layout_marginLeft="6dp" />
+
+    <TextView
+        android:id="@+id/startAtHourTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="6dp"
+        android:layout_marginTop="32dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Title"
+        android:textColor="@color/colorContract"
+        app:layout_constraintStart_toEndOf="@+id/textView4"
+        app:layout_constraintTop_toBottomOf="@+id/prayerCounterTextV"
+        tools:text="4 مساء"
+        android:layout_marginLeft="6dp" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="6dp"
+        android:layout_marginTop="32dp"
+        android:text="الساعة"
+        android:textAppearance="@style/TextAppearance.AppCompat.Title"
+        app:layout_constraintStart_toEndOf="@+id/startAtDayTV"
+        app:layout_constraintTop_toBottomOf="@+id/prayerCounterTextV"
+        android:layout_marginLeft="6dp" />
+
+    <ImageView
+        android:id="@+id/setStartAtButton"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginTop="32dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/prayerCounterTextV"
+        app:srcCompat="@drawable/ic_settings"
+        android:layout_marginRight="10dp" />
+
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="32dp"
+        android:text="تنتهى"
+        android:textAppearance="@style/TextAppearance.AppCompat.Title"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        android:layout_marginLeft="16dp" />
+
+    <TextView
+        android:id="@+id/endAtDayTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="6dp"
+        android:layout_marginTop="32dp"
+        android:text="يوم الجمعة"
+        android:textAppearance="@style/TextAppearance.AppCompat.Title"
+        android:textColor="@color/colorContract"
+        app:layout_constraintStart_toEndOf="@+id/textView5"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        android:layout_marginLeft="6dp" />
+
+    <TextView
+        android:id="@+id/endAtHourTV"
+        android:layout_width="wrap_content"
+        android:layout_height="28dp"
+        android:layout_marginStart="6dp"
+        android:layout_marginTop="32dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Title"
+        android:textColor="@color/colorContract"
+        app:layout_constraintStart_toEndOf="@+id/textView14"
+        app:layout_constraintTop_toBottomOf="@+id/startAtHourTV"
+        tools:text="4 مساء"
+        android:layout_marginLeft="6dp" />
+
+    <TextView
+        android:id="@+id/textView14"
+        android:layout_width="wrap_content"
+        android:layout_height="23dp"
+        android:layout_marginStart="6dp"
+        android:layout_marginTop="32dp"
+        android:text="الساعة"
+        android:textAppearance="@style/TextAppearance.AppCompat.Title"
+        app:layout_constraintStart_toEndOf="@+id/endAtDayTV"
+        app:layout_constraintTop_toBottomOf="@+id/startAtDayTV"
+        android:layout_marginLeft="6dp" />
+
+
+    <ImageView
+        android:id="@+id/setEndAtButton"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginTop="32dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/startAtHourTV"
+        app:srcCompat="@drawable/ic_settings"
+        android:layout_marginRight="10dp" />
+
+    <ImageView
+        android:id="@+id/setCounter"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginTop="32dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/hadith"
+        app:srcCompat="@drawable/ic_settings"
+        android:layout_marginRight="10dp" />
+
+    <Button
+        android:id="@+id/finalSetButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/shape_rec8_primary"
+        tools:text="ابدا"
+        android:textColor="@color/colorBackGround"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+
+</android.support.constraint.ConstraintLayout>
