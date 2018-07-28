@@ -1,6 +1,8 @@
 package labib.com.salatmvp.ui.base;
 
 import android.content.Context;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -50,9 +52,13 @@ public abstract class BaseDialog<T extends BaseMvpPresenter> extends android.sup
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-//        setCancelable(false);
 
         unbinder = ButterKnife.bind(this, view);
+
+        if (getDialog().getWindow() != null) {
+            getDialog().getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        }
+
         init(savedInstanceState);
     }
 

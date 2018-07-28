@@ -23,6 +23,14 @@
         <item name="android:textSize">14sp</item>
     </style>
 
+    <style name="SubmitButton">
+        <item name="android:textSize">24sp</item>
+        <item name="android:textColor">@color/colorBackGround</item>
+        <item name="android:background">@drawable/shape_rec8_primary</item>
+        <item name="android:layout_centerHorizontal">true</item>
+        <item name="android:text">@string/ok_action</item>
+
+    </style>
 
     <style name="walkThrough">
         <item name="android:textSize">24sp</item>
