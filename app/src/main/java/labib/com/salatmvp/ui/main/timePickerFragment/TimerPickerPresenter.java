@@ -17,10 +17,6 @@ public class TimerPickerPresenter extends BasePresenter<TimePickerContract.View>
         int hour = saved[1];
         int min = saved[2];
 
-        if (hour == -1 & min == -1) {
-            hour = 20;
-            min = 0;
-        }
         getView().initViews(hour, min);
     }
 
@@ -30,10 +26,6 @@ public class TimerPickerPresenter extends BasePresenter<TimePickerContract.View>
         int hour = saved[0];
         int min = saved[1];
 
-        if (hour == -1 & min == -1) {
-            hour = 17;
-            min = 0;
-        }
         getView().initViews(hour, min);
     }
 
@@ -41,12 +33,12 @@ public class TimerPickerPresenter extends BasePresenter<TimePickerContract.View>
     public void updateStart(int h, int m) {
         int d = (h < 17) ? Calendar.FRIDAY : Calendar.THURSDAY;
 
-        getDataManager().saveStartAt(d, h, m);
+        getDataManager().updateStartAt(d, h, m);
     }
 
     @Override
     public void updateEnd(int h, int m) {
-        getDataManager().saveEndAt(h, m);
+        getDataManager().updateEndAt(h, m);
     }
 
     @Override

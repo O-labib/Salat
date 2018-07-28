@@ -2,16 +2,24 @@ package labib.com.salatmvp.data.sharePreferences;
 
 public interface SharedPrefHelper {
 
-    void saveNofPrayers(int counter);
+    void updateNofPrayers(int counter);
 
     int retrieveNofPrayers();
 
-    void saveStartAt(int D,int h,int m);
+    void updateActiveNoPrayers(int n);
+
+    int retrieveActiveNofPrayer();
+
+    void updateStartAt(int D, int h, int m);
 
     int[] retrieveStartAt();
 
-    void saveEndAt(int h,int m);
+    void updateEndAt(int h, int m);
 
     int[] retrieveEndAt();
+
+    void updateStatus(boolean isRunning);
+
+    boolean retrieveStatus();
 
 }

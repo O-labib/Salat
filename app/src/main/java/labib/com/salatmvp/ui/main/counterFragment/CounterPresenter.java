@@ -26,7 +26,7 @@ public class CounterPresenter extends BasePresenter<CounterContract.View> implem
     @Override
     public void saveNofPrayers(int i) {
         int n = i * 20;
-        getDataManager().saveNofPrayers(n);
+        getDataManager().updateNofPrayers(n);
         getView().dismissDialog();
     }
 

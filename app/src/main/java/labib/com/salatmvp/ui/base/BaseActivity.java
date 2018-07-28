@@ -12,6 +12,7 @@ import labib.com.salatmvp.App;
 import labib.com.salatmvp.di.activity.ActivityComponent;
 import labib.com.salatmvp.di.activity.ActivityModule;
 import labib.com.salatmvp.di.activity.DaggerActivityComponent;
+import labib.com.salatmvp.utils.AppUtils;
 
 
 public abstract class BaseActivity<T extends BaseMvpPresenter> extends AppCompatActivity implements BaseMvpView {
@@ -30,7 +31,7 @@ public abstract class BaseActivity<T extends BaseMvpPresenter> extends AppCompat
         ButterKnife.bind(this);
 
         activityComponent = DaggerActivityComponent.builder()
-                .applicationComponent(((App) getApplicationContext()).getApplicationComponent())
+                .applicationComponent(App.getApplicationComponent())
                 .activityModule(new ActivityModule(this)).build();
 
         injectDependencies();
@@ -56,5 +57,8 @@ public abstract class BaseActivity<T extends BaseMvpPresenter> extends AppCompat
 
     protected abstract void injectDependencies();
 
-
+    @Override
+    public void showMessage(String s) {
+        AppUtils.customToast(s, this);
+    }
 }

@@ -18,6 +18,7 @@ import javax.inject.Inject;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import labib.com.salatmvp.di.activity.ActivityComponent;
+import labib.com.salatmvp.ui.main.MainActivity;
 
 public abstract class BaseDialog<T extends BaseMvpPresenter> extends android.support.v4.app.DialogFragment implements BaseMvpDialog {
 
@@ -102,6 +103,20 @@ public abstract class BaseDialog<T extends BaseMvpPresenter> extends android.sup
 
     public void dismissDialog(String tag) {
         dismiss();
+        ((MainActivity)getHostActivity()).onFragmentDetached();
+    }
+
+
+    public interface Callbacks {
+        void onFragmentDetached();
+    }
+
+
+    @Override
+    public void showMessage(String s) {
+        if (mActivity != null) {
+            mActivity.showMessage(s);
+        }
     }
 
     protected abstract int getContentResource();
